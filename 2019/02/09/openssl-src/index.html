@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="angthing"><meta name="keyword" content=""><link rel="shortcut icon" href="/img/favicon.ico"><title>openssl-src - undefined</title><link rel="stylesheet" href="/css/aircloud.css"><link rel="stylesheet" href="/css/gitment.css"><link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css"><script></script></head><body><div class="site-nav-toggle" id="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div><div class="index-about"><i></i></div><div class="index-container"><div class="index-left"><div class="nav" id="nav"><div class="avatar-name"><div class="avatar radius"><img src="/./img/jiateng.jpeg"></div><div class="name"><i>Kevin Lin</i></div></div><div class="contents" id="nav-content"><ul><li><a href="/"><i class="iconfont icon-shouye1"></i> <span>HOME</span></a></li><li><a href="/tags"><i class="iconfont icon-biaoqian1"></i> <span>TAGS</span></a></li><li><a href="/archives"><i class="iconfont icon-guidang2"></i> <span>ARCHIVES</span></a></li><li><a href="/about/"><i class="iconfont icon-guanyu2"></i> <span>ABOUT</span></a></li><li><a id="search"><i class="iconfont icon-sousuo1"></i> <span>SEARCH</span></a></li></ul></div><div id="toc" class="toc-article"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#openssl-源代码分析"><span class="toc-text">openssl 源代码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录结构"><span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="search-field" id="search-field"><div class="search-container"><div class="search-input"><span id="esc-search"><i class="icon-fanhui iconfont"></i></span> <input id="search-input"> <span id="begin-search">search</span></div><div class="search-result-container" id="search-result-container"></div></div></div><div class="index-about-mobile"><i></i></div></div><div class="index-middle"><div class="post-container"><div class="post-title">openssl-src</div><div class="post-meta"><span class="attr">Post：<span>2019-02-09 14:36:55</span></span> <span class="attr">Tags：/ <a class="tag" href="/tags/#openssl" title="openssl">openssl</a> <span>/</span> </span><span class="attr">Visit：<span id="busuanzi_value_page_pv"></span></span></div><div class="post-content"><h1 id="openssl-源代码分析"><a href="#openssl-源代码分析" class="headerlink" title="openssl 源代码分析"></a>openssl 源代码分析</h1><p><a href="https://github.com/openssl/openssl" target="_blank" rel="noopener">Github</a></p><p>openssl整个软件包主要包括三个主要的功能模块</p><ol><li>密码算法库</li><li>SSL/TLS协议库</li><li>应用程序<ol><li>密钥生成</li><li>证书管理</li><li>格式转换</li><li>数据加密</li><li>签名</li><li>SSL/TLS测试等</li></ol></li></ol><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><pre><code>openssl
+├── apps 应用程序
+├── Configurations 配置
+├── crypto 密码算法库
+|  ├── asn.1 DER编码解码
+|  ├── bio 包含各种输入输出抽象，文件、内存、stdio、socket、SSL
+|  ├── bn 大数运算
+|  ├── buffer 字符缓存
+|  ├── conf 配置文件读取, 主要配置文件为openssl.cnf
+|  ├── engine 硬件引擎, 提供了规定接口
+|  ├── err 错误处理, 提供处理接口；以堆栈显示错误
+|  ├── evp 对称算法、非对称算法及摘要算法封装
+|  ├── hmac 实现基于对称算法的MAC
+|  ├── lhash 实现散列表数据结构
+|  ├── ocsp OCSP数字证书在线认证, 实现ocsp协议的编解码等
+|  ├── pem 生成和读取PEM文件
+|  ├── pkcs7 实现构造和解析PKCS7消息
+|  ├── pkcs12 实现pkcs12证书构造和解析
+|  ├── pqueue 实现队列数据结构, 用于DTLS
+|  ├── rand 实现伪随机数生成
+|  ├── stack 实现堆栈数据结构
+|  ├── threads openssl支持多线程, 但是用户必须实现相关接口
+|  ├── txt_db 文本数据库
+|  └── x509 包括数字证书申请、证书和CRL构造解析和签名验证
+├── demos 示例
+├── doc 文档
+├── engines 引擎
+├── external 拓展
+├── ssl SSL/TLS协议库
+└── test 测试使用
+</code></pre><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/testlife007/p/6699566.html" target="_blank" rel="noopener">Openssl源代码整理学习</a></p><br><div id="comment-container"></div><div id="disqus_thread"></div><div id="lv-container"></div></div></div></div></div><footer class="footer"><ul class="list-inline text-center"></ul><p><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span>PV </span><span id="busuanzi_container_site_uv"><span id="busuanzi_value_site_uv"></span>UV </span>Created By <a href="https://hexo.io/">Hexo</a> Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p></footer></body><script>window.hexo_search_path="search.json",window.hexo_root="/",window.isPost=!0</script><script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><script src="/js/index.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></html>
