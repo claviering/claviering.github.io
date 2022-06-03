@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.a152f323.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Learning D3</title>
+  <script type="module" crossorigin src="/assets/d3.e042de95.js"></script>
+  <link rel="modulepreload" href="/assets/modulepreload-polyfill.b7f2da20.js">
+  <link rel="stylesheet" href="/assets/main.2cadcd29.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="t-a-center">Learning D3</h1>
+    <h2>Start</h2>
+    <p>
+    <pre> &lt;script src="https://d3js.org/d3.v7.min.js"&gt;&lt;/script&gt; </pre>
+    </p>
+    <p>or</p>
+    <div>
+      <pre>
+npm install -D d3 && npm install -D @types/d3
+import * as d3 from "d3";</pre>
+    </div>
+    <h2>create a rect</h2>
+    <div id="create-a-rect"></div>
+    <div>
+      <pre>
+let svg = d3.create("svg");
+let createarect = svg
+  .attr("width", 100)
+  .attr("height", 100)
+  .call((svg) =>
+    svg
+      .selectAll("rect")
+      .data([50])
+      .enter()
+      .append("rect")
+      .attr("width", (d) => d)
+      .attr("height", (d) => d)
+      .attr("fill", "red")
+  );
+document.querySelector("#create-a-rect")?.append(createarect.node() as Node);</pre>
+    </div>
+    <h2>make it to center</h2>
+    <div id="makeittocenter"></div>
+    <div>
+      <pre>
+.attr("x", (d) => d / 2)
+.attr("y", (d) => d / 2)</pre>
+    </div>
+    <p>or</p>
+    <div>
+      <pre>.attr("transform", (d) => `translate(${d},${d / 2})`)</pre>
+    </div>
+    <h2>rectangles are drawn from top to bottom</h2>
+    <div id="rectanglesAreDrawnFromTopToBottom"></div>
+    <h2>rect</h2>
+    <div id="rect1"></div>
+  </div>
+</body>
+
+
+</html>
