@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.a152f323.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>calc-reactive-image-size</title>
+  <style>
+    :root {
+      /* 单个轮播的时间 */
+      --speed: 1.5s;
+      /* 单个轮播图的高度 */
+      --height: 40px;
+      /* 轮播的个数 */
+      --num: 5;
+    }
+
+    .animate-container {
+      width: 200px;
+      height: 40px;
+      overflow: hidden;
+      background-color: var(--color-border-default);
+      border: 1px solid var(--color-border-default);
+    }
+
+    .animate {
+      animation: move calc(var(--speed) * var(--num)) steps(var(--num)) infinite;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateY(0px);
+      }
+
+      100% {
+        transform: translateY(calc(var(--height) * var(--num) * -1));
+      }
+    }
+
+    .animate-linear>div {
+      animation: subMove var(--speed) linear infinite;
+    }
+
+    .animate-cubic-bezier>div {
+      animation: subMoveCubicBezier var(--speed) cubic-bezier(1, -0.21, .85, 1.29) infinite;
+    }
+
+    .animate>div {
+      line-height: var(--height);
+      text-align: center;
+    }
+
+    @keyframes subMove {
+      0% {
+        transform: translateY(0px);
+      }
+
+      80%,
+      100% {
+        transform: translateY(calc(var(--height) * -1));
+      }
+    }
+
+    @keyframes subMoveCubicBezier {
+      0% {
+        transform: translateY(0px);
+      }
+
+      100% {
+        transform: translateY(calc(var(--height) * -1));
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/assets/main.3f46db0c.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>animation-timing-function: linear</h1>
+    <div class="animate-container">
+      <div class="animate animate-linear">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>1</div>
+      </div>
+    </div>
+    <h1>animation-timing-function: cubic-bezier</h1>
+    <div class="animate-container">
+      <div class="animate animate-cubic-bezier">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>1</div>
+      </div>
+    </div>
+    <h2>Reference</h2>
+    <p><a href="https://github.com/chokcoco/iCSS/issues/141">深入浅出 CSS 动画</a></p>
+    <p><a href="https://github.com/chokcoco/iCSS/issues/184">文字轮播与图片轮播？CSS 不在话下</a></p>
+    <p><a href="https://cubic-bezier.com/#.17,.67,.75,.06">cubic-bezier</a></p>
+  </div>
+</body>
+
+</html>
